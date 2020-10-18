@@ -1,0 +1,62 @@
+{{set .Header "Title" "My Bookings"}}
+{{template "header.html" .}}
+
+<div style="background-color: azure; height: 798px;">
+
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">My Bookings
+            </h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col m-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Venue
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Start Time
+                        </th>
+                        <th>
+                            End Time
+                        </th>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Customer Phone
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {{range $id,$b:= .Bookings}}
+                    <tr>
+                        <td>{{$b.Venue}}</td>
+                        <td>{{$b.Date}}</td>
+                        <td>{{$b.St}}</td>
+                        <td>{{$b.Et}}</td>
+                        <td>{{$b.CustName}}</td>
+                        <td>{{$b.CustPhone}}</td>
+                        <td><a class="btn btn-primary" href="/user/bookings/edit?b={{$b.Id}}">Edit</a></td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+{{template "footer.html" .}}

@@ -1,0 +1,46 @@
+{{set .Header "Title" "New Venue"}}
+{{template "adminHeader.html" .}}
+
+
+<div style="background-color: azure; height: 798px;">
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">New Venue
+            </h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8 m-4">
+            <form enctype="multipart/form-data" action="/admin/venues/new" method="POST">
+
+                <div class="custom-file mb-3">
+                    <input type="file" class="custom-file-input" id="venueImage" name="venueImg">
+                    <label class="custom-file-label" for="venueImage">Choose Venue Image</label>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="venueName" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Venue Name :</label>
+                        <input class="form-control" type="text" id="selectDate" name="venueName" value="">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col text-center">
+                        <input class="btn btn-success" type="submit" value="Submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        $(".custom-file-input").on("change", function() {
+          var fileName = $(this).val().split("\\").pop();
+          $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+</script>
+
+</div>
+
+{{template "footer.html" .}}

@@ -1,0 +1,52 @@
+{{set .Header "Title" "List of Venues"}}
+{{template "adminHeader.html" .}}
+
+<div style="background-color: azure; height: 798px;">
+
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">Venue List!
+            </h3>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col m-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th class="text-center">
+                            Action
+                        </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {{range $id,$v:= .Venues}}
+                    <tr>
+                        <td>{{$v.Id}}</td>
+                        <td>{{$v.Name}}</td>
+                        <td class="text-center"><a class="btn btn-primary" href="/admin/venues/details?v={{$v.Name}}&i={{$v.Image}}">Booked Time Slots</a>&nbsp;<a
+                                class="btn btn-danger" href="/admin/venues/del?v={{$v.Id}}">Remove</a></td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col mt-4 text-center">
+            <a class="btn btn-success" href="/admin/venues/new">Add New Venue</a>
+        </div>
+    </div>
+</div>
+
+{{template "footer.html" .}}
