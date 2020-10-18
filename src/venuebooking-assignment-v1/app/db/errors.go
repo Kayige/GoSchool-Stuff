@@ -1,6 +1,7 @@
 package db
 
 type (
+	// UserNotFoundError struct
 	UserNotFoundError struct {
 	}
 )

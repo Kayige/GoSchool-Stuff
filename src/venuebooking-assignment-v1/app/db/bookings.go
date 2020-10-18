@@ -1,5 +1,6 @@
 package db
 
+// Booking struct
 type Booking struct {
 	Id        int64  `json:"id"`
 	VenueName string `json:"venueName"`
@@ -9,6 +10,7 @@ type Booking struct {
 	CustPhone string `json:"cust_phone"`
 }
 
+// BookVenue takes in 6 variables, name, start time, end time, bookedBy(UserID), customer Name, Contact
 func (w *WriterDB) BookVenue(name, st, et string, bookedBy int64, custName, custPhone string) error {
 	stmt, err := w.db.Prepare("insert into bookings(v_name,st,et,booked_by,customer,phone) values(?,?,?,?,?,?)")
 	if err != nil {
@@ -22,14 +24,17 @@ func (w *WriterDB) BookVenue(name, st, et string, bookedBy int64, custName, cust
 	return nil
 }
 
+// GetBookingsByVenue checks name input from search venue
 func (r *ReaderDB) GetBookingsByVenue(name string) ([]Booking, error) {
+	// db query booking id, start time, end time, from table bookings where v_name = name
 	rows, err := r.db.Query("select id, st,et from bookings where v_name=?", name)
 	if err != nil {
 		return nil, err
 	}
-
+	// initialize variable
 	var bookings []Booking
 
+	// scan rows inside db
 	for rows.Next() {
 		booking := Booking{VenueName: name}
 

@@ -1,5 +1,6 @@
 package db
 
+// GetBookingsAll shows all the bookings available
 func (r *ReaderDB) GetBookingsAll() ([]Booking, error) {
 	rows, err := r.db.Query("select id,v_name,st,et,customer,phone from bookings;")
 	if err != nil {
@@ -20,6 +21,7 @@ func (r *ReaderDB) GetBookingsAll() ([]Booking, error) {
 	return bookings, nil
 }
 
+// GetUsersAll shows admin all the registered users
 func (r *ReaderDB) GetUsersAll() ([]User, error) {
 	rows, err := r.db.Query("select id,fname,lname,email,created_at,session from users where role=2;")
 	if err != nil {
@@ -40,6 +42,7 @@ func (r *ReaderDB) GetUsersAll() ([]User, error) {
 	return users, nil
 }
 
+// RemoveUser allows admin to delete user from DB
 func (w *WriterDB) RemoveUser(userID string) error {
 	stmt, err := w.db.Prepare("delete from users where id=? and role=2;")
 	if err != nil {
@@ -53,6 +56,7 @@ func (w *WriterDB) RemoveUser(userID string) error {
 	return nil
 }
 
+// RemoveVenue allows admin to delete venues from DB
 func (w *WriterDB) RemoveVenue(venueID string) error {
 	stmt, err := w.db.Prepare("delete from venues where id=?;")
 	if err != nil {

@@ -6,14 +6,18 @@ import (
 	"github.com/venuebooking/lib/crypto"
 )
 
+// UserRole variable int
 type UserRole int
 
 const (
-	UserRoleAdmin  UserRole = 1
-	UserRoleClient          = 2
+	// UserRoleAdmin Set to 1
+	UserRoleAdmin UserRole = 1
+	// UserRoleClient Set to 2
+	UserRoleClient = 2
 )
 
 type (
+	// User struct to parse
 	User struct {
 		ID             int64  `json:"id"`
 		Fname          string `json:"fname"`
@@ -85,7 +89,7 @@ func (w *WriterDB) UpdateProfile(id int64, fn, ln, em string) error {
 	return nil
 }
 
-
+// IsAlreadyExistsEmail checks whether user email is true or false
 func (r *ReaderDB) IsAlreadyExistsEmail(ctx context.Context, email string) (bool, error) {
 	_, err := r.UserByEmail(ctx, email, 2)
 	if _, ok := err.(*UserNotFoundError); ok {
@@ -95,7 +99,8 @@ func (r *ReaderDB) IsAlreadyExistsEmail(ctx context.Context, email string) (bool
 
 }
 
-
+// CreateUserAccount Function that takes in 4 variables, first name, last name, email, password
+// Prepares variables to be inserted to SQL DB
 func (w *WriterDB) CreateUserAccount(ctx context.Context, fname, lname, email, password string) error {
 	stmt, err := w.db.Prepare("insert into users(fname, lname, email, password, session) VALUES(?,?,?,?,?)")
 	if err != nil {
@@ -118,7 +123,6 @@ func (w *WriterDB) UpdateSession(userID int64, sessionToken string) error {
 	}
 	return nil
 }
-
 
 // DeleteSession removes user session detail from database
 func (r *ReaderDB) DeleteSession(userID string) error {
