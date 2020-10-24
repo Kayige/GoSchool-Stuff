@@ -8,16 +8,17 @@ package main
 
 import "fmt"
 
-type product struct {
+type Product struct {
 	productName     string
 	productPrice    float32
 	productCategory string
 }
 
-var productList *product
+type ProductList []*Product
 
 func main() {
 
+	// struct litereal declaration
 	item1 := Product{
 		productName:     "Bread",
 		productPrice:    1.25,
@@ -25,30 +26,50 @@ func main() {
 	}
 
 	fmt.Println(item1)
-	fmt.Println(ProductList)
+
+	// Create empty slice of struct pointers.
+	ProductList := make([]*Product, 0)
+
+	// Create struct and append it to the slice.
+	pl := new(Product)
+	pl.productName = "Fish"
+	pl.productPrice = 20.0
+	pl.productCategory = "Food"
+
+	ProductList = append(ProductList, pl)
+
+	// Create 2nd struct and append it to the slice.
+	pl = new(Product)
+	pl.productName = "Water"
+	pl.productPrice = 0.5
+	pl.productCategory = "Drink"
+
+	ProductList = append(ProductList, pl)
+
+	// Create 3rd struct and append it to the slice.
+	pl = new(Product)
+	pl.productName = "Detergent"
+	pl.productPrice = 10.0
+	pl.productCategory = "Household"
+
+	ProductList = append(ProductList, pl)
+
+	newProduct("Water", "Drink", 0.50)
+	newProduct("Soap", "Bath", 0.5)
+
+	// Loop over all indexes in the slice.
+	// ... Print all struct data.
+	for i := range ProductList {
+		ProductList := ProductList[i]
+		fmt.Printf("\nName: %v \nPrice: $ %v \nCategory: %v\n===========\n", ProductList.productName, ProductList.productPrice, ProductList.productCategory)
+	}
 }
 
-func newProduct(name string, category string, price float32) *Product{
-	pl := ProductList
-	if pl == nil {
-		return pl[0] := &Product{
-			productName: name,
-			productPrice: price,
-			productCategory: category,
-		}
-		
-	} else {
-		for i=0; i < len(pl); i++ {
-			if pl[i] == nil {
-				return pl[i] := &Product{
-					productName: name,
-					productPrice: price,
-					productCategory: category,
-				}
-			} 
-		}
-	}
-	
-
-	}
+// function to create struct
+func (p *Product) newProduct(name string, category string, price float32) {
+	pl := new(Product)
+	pl.productName = name
+	pl.productPrice = price
+	pl.productCategory = category
+	ProductList = append(ProductList, pl)
 }
