@@ -14,48 +14,39 @@ type Product struct {
 	productCategory string
 }
 
-type ProductList []*Product
-
 func main() {
-
+	var ProductList []Product
 	// struct litereal declaration
 	item1 := Product{
 		productName:     "Bread",
 		productPrice:    1.25,
 		productCategory: "Food",
 	}
-
 	fmt.Println(item1)
 
-	// Create empty slice of struct pointers.
-	ProductList := make([]*Product, 0)
-
 	// Create struct and append it to the slice.
-	pl := new(Product)
-	pl.productName = "Fish"
-	pl.productPrice = 20.0
-	pl.productCategory = "Food"
-
+	pl := newProduct("Fish", "Food", 20.0)
 	ProductList = append(ProductList, pl)
 
 	// Create 2nd struct and append it to the slice.
-	pl = new(Product)
-	pl.productName = "Water"
-	pl.productPrice = 0.5
-	pl.productCategory = "Drink"
-
+	pl = newProduct("Water", "Drink", 0.5)
 	ProductList = append(ProductList, pl)
 
 	// Create 3rd struct and append it to the slice.
-	pl = new(Product)
-	pl.productName = "Detergent"
-	pl.productPrice = 10.0
-	pl.productCategory = "Household"
-
+	pl = newProduct("Detergent", "Household", 10.0)
 	ProductList = append(ProductList, pl)
 
-	newProduct("Water", "Drink", 0.50)
-	newProduct("Soap", "Bath", 0.5)
+	pl = newProduct("Soap", "Bath", 0.5)
+	ProductList = append(ProductList, pl)
+
+	// Show Entire List
+	fmt.Println(ProductList)
+
+	// Print First Item on List
+	fmt.Println(ProductList[0])
+
+	// Print Second Item on List
+	fmt.Println(ProductList[1])
 
 	// Loop over all indexes in the slice.
 	// ... Print all struct data.
@@ -65,11 +56,11 @@ func main() {
 	}
 }
 
-// function to create struct
-func (p *Product) newProduct(name string, category string, price float32) {
-	pl := new(Product)
-	pl.productName = name
-	pl.productPrice = price
-	pl.productCategory = category
-	ProductList = append(ProductList, pl)
+// function to create item
+func newProduct(name string, category string, price float32) Product {
+	return Product{
+		productName:     name,
+		productCategory: category,
+		productPrice:    price,
+	}
 }
