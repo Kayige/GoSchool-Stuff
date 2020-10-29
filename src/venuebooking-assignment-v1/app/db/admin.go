@@ -1,6 +1,7 @@
 package db
 
-// GetBookingsAll shows all the bookings available
+// GetBookingsAll is a method of ReaderDB
+// that returns all the bookings available
 func (r *ReaderDB) GetBookingsAll() ([]Booking, error) {
 	rows, err := r.db.Query("select id,v_name,st,et,customer,phone from bookings;")
 	if err != nil {
