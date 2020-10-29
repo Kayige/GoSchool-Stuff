@@ -13,7 +13,7 @@ const (
 	// UserRoleAdmin Set to 1
 	UserRoleAdmin UserRole = 1
 	// UserRoleClient Set to 2
-	UserRoleClient = 2
+	UserRoleClient UserRole = 2
 )
 
 type (
