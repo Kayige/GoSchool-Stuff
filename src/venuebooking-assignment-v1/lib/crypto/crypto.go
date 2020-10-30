@@ -1,7 +1,7 @@
 package crypto
 
 import (
-	"crypto/md5"
+	"crypto/sha256"
 	"math/rand"
 	"strings"
 )
@@ -52,11 +52,11 @@ func CryptPrivate(pw, setting string) string {
 	if len(salt) != 8 {
 		return outp
 	}
-	hasher := md5.New()
+	hasher := sha256.New()
 	hasher.Write([]byte(salt + pw))
 	hx := hasher.Sum(nil)
 	for count != 0 {
-		hasher := md5.New()
+		hasher := sha256.New()
 		hasher.Write([]byte(string(hx) + pw))
 		hx = hasher.Sum(nil)
 		count -= 1
