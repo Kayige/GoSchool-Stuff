@@ -11,6 +11,7 @@ type Booking struct {
 }
 
 // BookVenue takes in 6 variables, name, start time, end time, bookedBy(UserID), customer Name, Contact
+// Prepares SQL query statement and writes to SQL database
 func (w *WriterDB) BookVenue(name, st, et string, bookedBy int64, custName, custPhone string) error {
 	stmt, err := w.db.Prepare("insert into bookings(v_name,st,et,booked_by,customer,phone) values(?,?,?,?,?,?)")
 	if err != nil {
@@ -24,7 +25,9 @@ func (w *WriterDB) BookVenue(name, st, et string, bookedBy int64, custName, cust
 	return nil
 }
 
-// GetBookingsByVenue checks name input from search venue
+// GetBookingsByVenue takes a string input
+// Sends a SQL query via string input checks each booking
+// returns the searched bookings
 func (r *ReaderDB) GetBookingsByVenue(name string) ([]Booking, error) {
 	// db query booking id, start time, end time, from table bookings where v_name = name
 	rows, err := r.db.Query("select id, st,et from bookings where v_name=?", name)
@@ -47,6 +50,9 @@ func (r *ReaderDB) GetBookingsByVenue(name string) ([]Booking, error) {
 	return bookings, nil
 }
 
+// GetBookingsByUser checks for uuid
+// Sends a query to filter out uuid
+// returns the booking with uuid
 func (r *ReaderDB) GetBookingsByUser(booked_by int64) ([]Booking, error) {
 	rows, err := r.db.Query("select id,v_name,st,et,customer,phone from bookings where booked_by=?", booked_by)
 	if err != nil {
@@ -67,6 +73,9 @@ func (r *ReaderDB) GetBookingsByUser(booked_by int64) ([]Booking, error) {
 	return bookings, nil
 }
 
+// GetBookingById takes in booking_id string
+// checks the booking array
+// returns booking based on booking_id
 func (r *ReaderDB) GetBookingById(booking_id string) (Booking, error) {
 	var booking Booking
 	rows, err := r.db.Query("select id,v_name,st,et,customer,phone from bookings where id=?", booking_id)
@@ -82,6 +91,8 @@ func (r *ReaderDB) GetBookingById(booking_id string) (Booking, error) {
 	return booking, nil
 }
 
+// UpdateBooking takes in 6 parameters
+// SQL query updates the booking table
 func (w *WriterDB) UpdateBooking(bookingId, name, st, et, custName, custPhone string) error {
 	stmt, err := w.db.Prepare("update bookings set v_name=? ,st=? ,et=? ,customer=? ,phone=? where id=?;")
 	if err != nil {
