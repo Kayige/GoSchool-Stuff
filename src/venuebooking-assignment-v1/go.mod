@@ -8,4 +8,5 @@ require (
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/handlers v1.5.1
 	github.com/gorilla/mux v1.8.0
+	golang.org/x/tools v0.0.0-20201030010431-2feb2bb1ff51 // indirect
 )
