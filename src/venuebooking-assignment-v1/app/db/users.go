@@ -7,13 +7,13 @@ import (
 )
 
 // UserRole variable int
-type UserRole int
+// type UserRole int
 
 const (
 	// UserRoleAdmin Set to 1
-	UserRoleAdmin UserRole = 1
+	UserRoleAdmin = 1
 	// UserRoleClient Set to 2
-	UserRoleClient UserRole = 2
+	UserRoleClient = 2
 )
 
 type (
