@@ -8,7 +8,7 @@ import (
 
 // set crypto key settings
 const (
-	cryptsettings = "$P$BwQZDcQaNU9zAOF.6MOUdEhz9X68fL1"
+	CRYPT_SETTINGS = "$P$BwQZDcQaNU9zAOF.6MOUdEhz9X68fL1"
 )
 
 // encode blocksize 64

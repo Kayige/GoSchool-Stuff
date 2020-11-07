@@ -107,7 +107,7 @@ func (w *WriterDB) CreateUserAccount(ctx context.Context, fname, lname, email, p
 		return err
 	}
 	// uses Crypto library to generate hash to mask password
-	_, err = stmt.Exec(fname, lname, email, crypto.CryptPrivate(password, crypto.cryptsettings), "")
+	_, err = stmt.Exec(fname, lname, email, crypto.CryptPrivate(password, crypto.CRYPT_SETTINGS), "")
 	return err
 }
 

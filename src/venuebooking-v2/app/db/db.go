@@ -9,6 +9,7 @@ import (
 	"log"
 	"time"
 
+	// imports mysql for gos
 	_ "github.com/go-sql-driver/mysql"
 )
 

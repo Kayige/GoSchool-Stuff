@@ -12,7 +12,7 @@ func (r *ReaderDB) GetBookingsAll() ([]Booking, error) {
 	for rows.Next() {
 		booking := Booking{}
 
-		if err = rows.Scan(&booking.Id, &booking.VenueName, &booking.St, &booking.Et, &booking.CustName, &booking.CustPhone); err != nil {
+		if err = rows.Scan(&booking.ID, &booking.VenueName, &booking.St, &booking.Et, &booking.CustName, &booking.CustPhone); err != nil {
 			return nil, err
 		}
 
