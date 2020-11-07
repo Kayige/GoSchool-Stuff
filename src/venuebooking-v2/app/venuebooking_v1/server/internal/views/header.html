@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>VB</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a href="/user/venues" class="navbar-brand">
+      <b>VenueBooking</b>
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="/user/venues" class="nav-item nav-link active">Venues</a>
+            <a href="/user/venue/new" class="nav-item nav-link">New</a>
+            <a href="/user/venue/available" class="nav-item nav-link">Available</a>
+            <a href="/user/venue/booked" class="nav-item nav-link">Booked</a>
+            <a href="/user/venue/search?ven=0912qw" class="nav-item nav-link">Search</a>
+            <!-- <a href="/user/bookings" class="nav-item nav-link">My Bookings</a> -->
+            <!-- <a href="/user/edit" class="nav-item nav-link">Profile</a> -->
+        </div>
+        <div class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/user/profile">Profile</a>
+                <a class="dropdown-item" href="/user/bookings">My Bookings</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
+            </li>
+        </div>
+    </div>
+</nav>
+  
+<div class="container">
+

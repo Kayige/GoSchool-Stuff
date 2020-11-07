@@ -1,0 +1,58 @@
+{{set .Header "Title" "My Profile"}}
+{{template "header.html" .}}
+
+<div style="background-color: azure; height: 798px;">
+
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">My Profile
+            </h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8 m-4">
+
+            <form class="asyncer" method="POST" action="/user/profile">
+                <div class="text-center">
+                    <p class="text-danger" id="error-container" style="display: none;">Error container.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="fname" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">First Name :</label>
+                    <input class="form-control form-control-user" type="text" placeholder="Enter First Name"
+                        name="fname" value="{{.Fn}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="lname" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Last Name :</label>
+                    <input class="form-control form-control-user" type="text" placeholder="Enter Last Name"
+                        name="lname" value="{{.Ln}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Email :</label>
+                    <input class="form-control form-control-user" type="text" placeholder="Enter Email" name="email" value="{{.Em}}">
+                </div>
+
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div id="spinner" class="spinner-border text-primary d-none"></div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button class="btn btn-primary text-white btn-user col-sm-4 col-md-4 col-lg-4"
+                        type="submit">Update</button>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{{template "footer.html" .}}

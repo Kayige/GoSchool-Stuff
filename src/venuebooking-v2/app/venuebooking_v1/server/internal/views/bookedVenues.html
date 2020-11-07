@@ -1,0 +1,30 @@
+{{set .Header "Title" "List of Bookings"}}
+{{template "header.html" .}}
+
+<div style="background-color: azure; height: 798px;">
+
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">Booked Venues!
+            </h3>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+        {{range $id,$venue:= .Venues}}
+            <div class="col-3 m-4">
+                <div class="card" style="width: 18rem; border-radius: 25px;">
+                    <img class="card-img-top" src="/assets/images/{{$venue.Image}}" alt="Card image cap" style="height: 12rem; border-radius: 25px 25px 0px 0px;">
+                    <div class="card-body text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                        <h5 class="card-title">{{$venue.Name}}</h5>
+                        <a href="/user/venue/details?v={{$venue.Name}}&i={{$venue.Image}}" class="btn btn-success mt-1">See Booked Time Slots</a>
+                    </div>
+                </div>
+            </div>
+        {{end}}
+        
+    </div>
+</div>
+
+{{template "footer.html" .}}

@@ -1,0 +1,89 @@
+{{set .Header "Title" "Update Booking"}}
+{{template "header.html" .}}
+
+<div style="background-color: azure; height: 798px;">
+
+    <div class="row">
+        <div class="col mt-4">
+            <h3 class="text-center" style="font-family: Georgia, 'Times New Roman', Times, serif;">Update Booking
+            </h3>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-8 m-4">
+
+            <form class="asyncer" action="/user/bookings" method="POST">
+                <div class="text-center">
+                    <p class="text-danger" id="error-container" style="display: none;">Error container.</p>
+                </div>
+                <input type="hidden" name="bookingId" value="{{.Booking.Id}}">
+                
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="selectVenue"
+                            style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Select Venue :</label>
+                        <select name="venue" class="form-control" id="venue-selection"
+                            style="height: 50px;-webkit-appearance: none;">
+                            {{range $id,$venue:= .Venues}}
+                                <option value="{{$venue.Name}}" {{if eq $venue.Name $.Booking.Venue}}selected{{end}}>{{$venue.Name}}</option>
+                            {{end}}
+
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="selectDate" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Pick Date :</label>
+                        <input class="form-control" type="date" id="selectDate" name="venueDate" value="{{.Booking.Date}}">
+                    </div>
+                </div>
+
+                <div class="form-group row mt-4 text-center">
+                    <div class="col-md-6">
+                        <label for="startTime" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Start Time : </label>
+                        <input type="time" id="startTime" name="venueSt" value="{{.Booking.St}}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="endTime" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">End Time : </label>
+                        <input type="time" id="endTime" name="venueEt" value="{{.Booking.Et}}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="custName" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Customer Name :</label>
+                        <input class="form-control" type="text" name="custName" value="{{.Booking.CustName}}">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col">
+                        <label for="custPhone" style="margin-bottom: 0px;font-weight: bold;padding-bottom: 8px;">Customer Phone :</label>
+                        <input class="form-control" type="text" name="custPhone" value="{{.Booking.CustPhone}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                        <div id="spinner" class="spinner-border text-primary d-none"></div>
+                    </div>
+                </div>
+                
+                <div class="row mt-5">
+                    <div class="col text-center">
+                        <button class="btn btn-success" type="submit">Update Booking</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+{{template "footer.html" .}}
