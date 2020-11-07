@@ -80,8 +80,7 @@ func MiddlewareAuthAdmin(next http.Handler) http.Handler {
 			if login == "" {
 				http.Redirect(w, r, fmt.Sprintf("/admin/login?continue=%s", r.RequestURI), http.StatusTemporaryRedirect)
 				return
-			}
-			next.ServeHTTP(w, r.WithContext(context.WithValue(r.Context(), "admin_id", login)))
+			} next.ServeHTTP(w, r.WithContext(context.WithValue(r.Context(), "admin_id", login)))
 			return
 		}
 

@@ -6,11 +6,14 @@ import (
 	"strings"
 )
 
+// set crypto key settings
 const (
 	cryptsettings = "$P$BwQZDcQaNU9zAOF.6MOUdEhz9X68fL1"
 )
 
+// encode blocksize 64
 func encode64(inp []byte, count int) string {
+	// int to string
 	const itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	var outp string
 	cur := 0

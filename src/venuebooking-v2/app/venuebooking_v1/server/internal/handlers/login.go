@@ -73,7 +73,7 @@ func (h *Handler) HandleUserLoginPOST(w http.ResponseWriter, r *http.Request) {
 		Expires: time.Now().Add(24 * time.Hour),
 		Path:    "/user",
 	}
-
+	// set cookie to user
 	http.SetCookie(w, cookie)
 
 	// redirect to user HOME page on successful authentication
