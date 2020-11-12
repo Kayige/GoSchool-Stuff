@@ -104,7 +104,7 @@ func fetchData(API int) {
 	}
 }
 
-func main() {
+func lab() {
 	// instantiate channel
 	c = make(chan map[int]interface{})
 	apis = make(map[int]string)

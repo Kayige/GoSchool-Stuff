@@ -29,7 +29,7 @@ type Result struct {
 	Articles     []Data
 }
 
-func main() {
+func news() {
 	url := "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=68abed74b6aa468aa1c2bcdd04ccaca9"
 
 	if resp, err := http.Get(url); err == nil {
