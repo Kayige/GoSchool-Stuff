@@ -1,0 +1,5 @@
+FROM golang
+WORKDIR /go/src
+RUN go get -u github.com/gorilla/mux
+COPY . ./
+CMD ["go", "run", "main.go"]

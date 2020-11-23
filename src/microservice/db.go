@@ -59,19 +59,3 @@ func DeleteRecord(db *sql.DB, ID int) {
 	}
 
 }
-
-func main() {
-	db, err := sql.Open("mysql", "root:password@tcp(127.0.0.1:32769)/my_db")
-
-	if err != nil {
-		panic(err.Error())
-	} else {
-		fmt.Println("Database Open")
-	}
-	// DeleteRecord(db, 2)
-	// EditRecord(db, 2, "Taylor", "Swift", 23)
-	// InsertRecord(db, 2, "Michael", "Jackson", 55)
-	GetRecords(db)
-	defer db.Close()
-
-}

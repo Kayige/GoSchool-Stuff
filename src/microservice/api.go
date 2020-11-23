@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -144,14 +143,4 @@ func course(w http.ResponseWriter, r *http.Request) {
 
 	}
 
-}
-
-func main() {
-	courses = make(map[string]courseInfo)
-	router := mux.NewRouter()
-	router.HandleFunc("/api/v1", home)
-	router.HandleFunc("/api/v1/courses", allcourses)
-	router.HandleFunc("/api/v1/courses/{courseid}", course).Methods("GET", "PUT", "POST", "DELETE")
-	fmt.Println("Connecting at port:5000")
-	log.Fatal(http.ListenAndServe(":5000", router))
 }
