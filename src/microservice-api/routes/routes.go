@@ -51,7 +51,7 @@ func auth(f http.HandlerFunc) http.HandlerFunc {
 		reqToken := r.Header.Get("Authorization")
 		splitToken := strings.Split(reqToken, "Bearer ")
 		if len(splitToken) != 2 {
-			w.Write([]byte("Empty access token. Please set acess key in bearer token"))
+			w.Write([]byte("Empty access token. Please set access key in bearer token"))
 			return
 		} else {
 			reqToken = splitToken[1]
@@ -59,7 +59,7 @@ func auth(f http.HandlerFunc) http.HandlerFunc {
 			result := controller.AuthenticateKey(reqToken)
 			log.Println("it is ", result)
 			if result == false {
-				w.Write([]byte("Unauthroized access"))
+				w.Write([]byte("Unauthorized access"))
 				return
 			}
 		}

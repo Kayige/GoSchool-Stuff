@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `my_db` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `my_db`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
--- Host: 149.28.143.216    Database: my_db
+-- Host: 127.0.0.1   Database: my_db
 -- ------------------------------------------------------
 -- Server version	5.7.32
 
@@ -65,7 +65,7 @@ CREATE TABLE `keys` (
 
 LOCK TABLES `keys` WRITE;
 /*!40000 ALTER TABLE `keys` DISABLE KEYS */;
-INSERT INTO `keys` VALUES (1,'c4304d1efcd9bfa812780fbcdd8b7ccf','1'),(2,'48f4be4548e70ee14ba3d884e29f9f1b','1'),(3,'3c0504482629d3b1ae7dfcdc7b469a53','1'),(8,'79ca7652b3ea24a5cf5444b56e48f041','1'),(9,'cc800869635c0b5119c6b7d3294dbf50','1'),(11,'59875c0e4981506b84c15b14f5d6aeb3','1'),(12,'812cea4186868f003f2cc0ac69fb46a6','1'),(13,'22d07e1d8e2ca7bcc41ea040f04ae793','1'),(14,'78fc5d3dd1ea446f3ea40edd1a350461','1'),(15,'da921d48e83257c7a21f621d8b6c59b1','1');
+INSERT INTO `keys` VALUES (1,'c4304d1efcd9bfa812780fbcdd8b7ccf','1');
 /*!40000 ALTER TABLE `keys` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-20 10:22:30
+-- Dump completed on 2020-11-27 08:19:23
